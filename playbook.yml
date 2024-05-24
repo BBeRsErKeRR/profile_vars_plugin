@@ -4,4 +4,4 @@
   connection: local
   tasks:
     - debug:
-        var: _group_var_1.keys()
+        var: some_list
