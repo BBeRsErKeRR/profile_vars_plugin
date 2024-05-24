@@ -1,0 +1,7 @@
+test: 123
+
+test_many_nested:
+  some_data: "{{ test1 }}"
+  result_usr: "test"
+
+ansible_user: "{{ test_many_nested.result_usr }}"
