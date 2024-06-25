@@ -112,7 +112,7 @@ def assign_wrap_function_args(obj, funcname, cls, host, task):
 class CallbackModule(CallbackBase):
     CALLBACK_VERSION = 1.0
     CALLBACK_TYPE = 'aggregate'
-    CALLBACK_NAME = 'test_vars'
+    CALLBACK_NAME = 'profile_vars'
 
     def __init__(self, display=None):
         super(CallbackModule, self).__init__(display=display)
@@ -132,10 +132,11 @@ class CallbackModule(CallbackBase):
                 tn1 = time.time()
                 res = func_exec_template(variable, **kwargs)
                 td = time.time() - tn1
-                if td >= 0.5:
+                if td >= 0.15:
                     time_elapsed = secondsToStr(td)
+                    res_v = str(variable)[0: 300]
                     display.display(
-                        f"TEMPLATE_TIME   H:{host}| T:{task._uuid}| V:{variable}| -> {time_elapsed}")
+                        f"TEMPLATE_TIME   H:{host}| T:{task._uuid}| V:{res_v}| -> {time_elapsed}")
                 return res
 
             templar.template = custom_template.__get__(templar, Templar)
