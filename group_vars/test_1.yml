@@ -1,0 +1,5 @@
+test_many_nested:
+  new_data: "{{ lookup_vars[1] }}"
+
+test: "{{ lookup('pipe', 'sleep 1 && echo BEST')}}"
+# ansible_ssh_user: "{{ lookup('pipe', 'sleep 2 && echo BEST2')}}"

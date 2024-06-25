@@ -13,3 +13,42 @@ some_list:
   - value: "{{ hostvars[groups[hostvars[inventory_hostname].group_names[0]][1]].test_many_nested.result_usr }}"
   - value: "{{ hostvars[groups[hostvars[inventory_hostname].group_names[1]][1]].test_many_nested.result_usr }}"
   - value: "{{ hostvars[groups[hostvars[inventory_hostname].group_names[1]][0]].test_many_nested.result_usr }}"
+  - structure:
+      listen:
+        - "{{ test1 }}"
+        - "{{ hostvars[groups[hostvars[inventory_hostname].group_names[1]][0]].test2 }}"
+    test_db1:
+      user: "{{ lookup_vars[0] }}"
+      password: "{{ lookup_vars[2] }}"
+
+
+
+_group_var_1:
+  some_nested:
+    structure:
+      listen:
+        - "{{ test1 }}"
+        - "{{ hostvars[groups[hostvars[inventory_hostname].group_names[1]][0]].test2 }}"
+    test_db1:
+      user: "{{ lookup_vars[0] }}"
+      password: "{{ lookup_vars[2] }}"
+    test_db2:
+      user: "{{ lookup_vars[0] }}"
+      password: "{{ lookup_vars[2] }}"
+    test_db12:
+      user: "{{ lookup_vars[0] }}"
+      password: "{{ lookup_vars[2] }}"
+    test_db13:
+      user: "{{ lookup_vars[0] }}"
+      password: "{{ lookup_vars[2] }}"
+    test_db14:
+      user: "{{ lookup_vars[0] }}"
+      password: "{{ lookup_vars[2] }}"
+    test_db15:
+      user: "{{ lookup_vars[0] }}"
+      password: "{{ lookup_vars[2] }}"
+
+lookup_vars:
+   - "{{lookup('env', 'LESS')}}"
+   - "{{lookup('env', 'LANG')}}"
+   - "{{lookup('env', 'PWD')}}"

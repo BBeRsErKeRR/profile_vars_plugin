@@ -1,0 +1,2 @@
+test_many_nested:
+  newaaaa_data: "{{ lookup_vars[1] }}"

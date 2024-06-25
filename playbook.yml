@@ -1,7 +1,11 @@
 - name: Testing playbook
-  hosts: all
+  hosts: all[0]
   gather_facts: false
   connection: local
   tasks:
     - debug:
         var: some_list
+      no_log: true
+    
+    - debug:
+        var: test
